@@ -5,16 +5,20 @@ class MainViewController < UIViewController
     @counter = subview(UILabel, :counter)
   end
 
+  def getValueFromServer
+    BW::HTTP.get("http://radiate.herokuapp.com/counter") do |response|
+      if response.ok?
+        json = BW::JSON.parse(response.body.to_str)
+        @counter.text = json['value']
+      else
+        App.alert(response.error_message)
+      end
+    end
+  end
+
   def viewDidLoad
     if super
-      BW::HTTP.get("http://radiate.herokuapp.com/counter") do |response|
-        if response.ok?
-          json = BW::JSON.parse(response.body.to_str)
-          @counter.text = json['value']
-        else
-          App.alert(response.error_message)
-        end
-      end
+      getValueFromServer
 
       @bully = BLYClient.alloc.initWithAppKey("eed0809a13bc35456e5e", delegate:self)
       @channel = @bully.subscribeToChannelWithName('updates')
@@ -38,6 +42,11 @@ class MainViewController < UIViewController
         end
       end
 
+      if UIApplicationWillEnterForegroundNotification != nil
+        @foreground_observer = App.notification_center.observe UIApplicationWillEnterForegroundNotification do |notification|
+          getValueFromServer
+        end
+      end
     end
   end
 
