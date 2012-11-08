@@ -1,0 +1,450 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<constant type='@' name='SRWebSocketErrorDomain' declared_type='NSString*' const='true'/>
+<constant type='@' name='kReachabilityChangedNotification' declared_type='NSString*' const='true'/>
+<enum name='NEEDS_DISPATCH_RETAIN_RELEASE' value='0'/>
+<enum name='NotReachable' value='0'/>
+<enum name='ReachableViaWWAN' value='1'/>
+<enum name='ReachableViaWiFi' value='2'/>
+<enum name='SR_CLOSED' value='3'/>
+<enum name='SR_CLOSING' value='2'/>
+<enum name='SR_CONNECTING' value='0'/>
+<enum name='SR_OPEN' value='1'/>
+<function name='b64_ntop'>
+<arg type='*' name='src' declared_type='u_char*' const='true'/>
+<arg type='L' name='srclength' declared_type='size_t'/>
+<arg type='*' name='target' declared_type='char*'/>
+<arg type='L' name='targsize' declared_type='size_t'/>
+<retval type='i' declared_type='int'/>
+</function>
+<function name='b64_pton'>
+<arg type='*' name='src' declared_type='char*' const='true'/>
+<arg type='*' name='target' declared_type='u_char*'/>
+<arg type='L' name='targsize' declared_type='size_t'/>
+<retval type='i' declared_type='int'/>
+</function>
+<class name='BLYChannel'>
+<method selector='_initWithName:client:authenticationBlock:'>
+<arg type='@' name='name' declared_type='NSString*' index='0'/>
+<arg type='@' name='client' declared_type='BLYClient*' index='1'/>
+<arg type='@?' function_pointer='true' name='authenticationBlock' declared_type='BLYChannelAuthenticationBlock' index='2'>
+<arg type='@' declared_type='BLYChannel*'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='_subscribe'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='authenticationBlock'>
+<retval type='@?' function_pointer='true' declared_type='BLYChannelAuthenticationBlock'>
+<arg type='@' declared_type='BLYChannel*'/>
+<retval type='v' declared_type='void'/>
+</retval>
+</method>
+<method selector='authenticationParameters'>
+<retval type='@' declared_type='NSDictionary*'/>
+</method>
+<method selector='authenticationParametersData'>
+<retval type='@' declared_type='NSData*'/>
+</method>
+<method selector='bindToEvent:block:'>
+<arg type='@' name='eventName' declared_type='NSString*' index='0'/>
+<arg type='@?' function_pointer='true' name='block' declared_type='BLYChannelEventBlock' index='1'>
+<arg type='@' declared_type='id'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='client'>
+<retval type='@' declared_type='BLYClient*'/>
+</method>
+<method selector='isPrivate'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='name'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='setAuthenticationBlock:'>
+<arg type='@?' function_pointer='true' name='authenticationBlock' declared_type='BLYChannelAuthenticationBlock' index='0'>
+<arg type='@' declared_type='BLYChannel*'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setAuthenticationParameters:'>
+<arg type='@' name='authenticationParameters' declared_type='NSDictionary*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setAuthenticationParametersData:'>
+<arg type='@' name='authenticationParametersData' declared_type='NSData*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setClient:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setName:'>
+<arg type='@' name='name' declared_type='NSString*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setSubscriptions:'>
+<arg type='@' name='subscriptions' declared_type='NSMutableDictionary*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='subscribeWithAuthentication:'>
+<arg type='@' name='authentication' declared_type='NSDictionary*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='subscriptions'>
+<retval type='@' declared_type='NSMutableDictionary*'/>
+</method>
+<method selector='unbindEvent:'>
+<arg type='@' name='eventName' declared_type='NSString*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='unsubscribe'>
+<retval type='v' declared_type='void'/>
+</method>
+</class>
+<class name='BLYClient'>
+<method selector='_appDidBecomeActive:'>
+<arg type='@' name='notification' declared_type='NSNotification*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='_appDidEnterBackground:'>
+<arg type='@' name='notificaiton' declared_type='NSNotification*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='_reachabilityChanged:'>
+<arg type='@' name='notification' declared_type='NSNotification*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='_reconnectChannels'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='_removeChannel:'>
+<arg type='@' name='channel' declared_type='BLYChannel*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='_sendEvent:dictionary:'>
+<arg type='@' name='eventName' declared_type='NSString*' index='0'/>
+<arg type='@' name='dictionary' declared_type='NSDictionary*' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='appKey'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='automaticallyDisconnectInBackground'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='automaticallyReconnect'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='connect'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='connectedChannels'>
+<retval type='@' declared_type='NSMutableDictionary*'/>
+</method>
+<method selector='delegate'>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='disconnect'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='initWithAppKey:delegate:'>
+<arg type='@' name='appKey' declared_type='NSString*' index='0'/>
+<arg type='@' name='delegate' declared_type='id' index='1'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='isConnected'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='setAppKey:'>
+<arg type='@' name='appKey' declared_type='NSString*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setAutomaticallyDisconnectInBackground:'>
+<arg type='B' name='automaticallyDisconnectInBackground' declared_type='BOOL' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setAutomaticallyReconnect:'>
+<arg type='B' name='automaticallyReconnect' declared_type='BOOL' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setConnectedChannels:'>
+<arg type='@' name='connectedChannels' declared_type='NSMutableDictionary*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setDelegate:'>
+<arg type='@' name='delegate' declared_type='id' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setSocketID:'>
+<arg type='@' name='socketID' declared_type='NSString*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setWebSocket:'>
+<arg type='^i' name='webSocket' declared_type='int*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='socketID'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='subscribeToChannelWithName:'>
+<arg type='@' name='channelName' declared_type='NSString*' index='0'/>
+<retval type='@' declared_type='BLYChannel*'/>
+</method>
+<method selector='subscribeToChannelWithName:authenticationBlock:'>
+<arg type='@' name='channelName' declared_type='NSString*' index='0'/>
+<arg type='@?' function_pointer='true' name='authenticationBlock' declared_type='BLYChannelAuthenticationBlock' index='1'>
+<arg type='@' declared_type='BLYChannel*'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='@' declared_type='BLYChannel*'/>
+</method>
+<method class_method='true' selector='version'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='webSocket'>
+<retval type='^i' declared_type='int*'/>
+</method>
+</class>
+<class name='NSData'>
+<method selector='SR_stringByBase64Encoding'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+</class>
+<class name='NSMutableURLRequest'>
+<method selector='SR_SSLPinnedCertificates'>
+<retval type='@' declared_type='NSArray*'/>
+</method>
+<method selector='setSR_SSLPinnedCertificates:'>
+<arg type='@' name='SR_SSLPinnedCertificates' declared_type='NSArray*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='bullyClient:didReceiveError:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<arg type='@' name='error' declared_type='NSError*' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='bullyClientDidConnect:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='bullyClientDidDisconnect:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='webSocket:didCloseWithCode:reason:wasClean:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<arg type='i' name='code' declared_type='NSInteger' index='1'/>
+<arg type='@' name='reason' declared_type='NSString*' index='2'/>
+<arg type='B' name='wasClean' declared_type='BOOL' index='3'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='webSocket:didFailWithError:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<arg type='@' name='error' declared_type='NSError*' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='webSocket:didReceiveMessage:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<arg type='@' name='message' declared_type='id' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='webSocketDidOpen:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+</class>
+<class name='NSURLRequest'>
+<method selector='SR_SSLPinnedCertificates'>
+<retval type='@' declared_type='NSArray*'/>
+</method>
+</class>
+<class name='Reachability'>
+<method selector='connectionRequired'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='currentReachabilityFlags'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='currentReachabilityStatus'>
+<retval type='i' declared_type='NetworkStatus'/>
+</method>
+<method selector='currentReachabilityString'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='initWithReachabilityRef:'>
+<arg type='^{__SCNetworkReachability=}' name='ref' declared_type='SCNetworkReachabilityRef' index='0'/>
+<retval type='@' declared_type='Reachability*'/>
+</method>
+<method selector='isConnectionOnDemand'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='isConnectionRequired'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='isInterventionRequired'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='isReachable'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='isReachableViaWWAN'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='isReachableViaWiFi'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='reachabilityFlags'>
+<retval type='I' declared_type='SCNetworkReachabilityFlags'/>
+</method>
+<method class_method='true' selector='reachabilityForInternetConnection'>
+<retval type='@' declared_type='Reachability*'/>
+</method>
+<method class_method='true' selector='reachabilityForLocalWiFi'>
+<retval type='@' declared_type='Reachability*'/>
+</method>
+<method class_method='true' selector='reachabilityWithAddress:'>
+<arg type='^{sockaddr_in=CCS{in_addr=I}[8c]}' name='hostAddress' declared_type='struct sockaddr_in*' const='true' index='0'/>
+<retval type='@' declared_type='Reachability*'/>
+</method>
+<method class_method='true' selector='reachabilityWithHostname:'>
+<arg type='@' name='hostname' declared_type='NSString*' index='0'/>
+<retval type='@' declared_type='Reachability*'/>
+</method>
+<method selector='reachableBlock'>
+<retval type='@?' function_pointer='true' declared_type='NetworkReachable'>
+<arg type='@' declared_type='Reachability*'/>
+<retval type='v' declared_type='void'/>
+</retval>
+</method>
+<method selector='reachableOnWWAN'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='setReachableBlock:'>
+<arg type='@?' function_pointer='true' name='reachableBlock' declared_type='NetworkReachable' index='0'>
+<arg type='@' declared_type='Reachability*'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setReachableOnWWAN:'>
+<arg type='B' name='reachableOnWWAN' declared_type='BOOL' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setUnreachableBlock:'>
+<arg type='@?' function_pointer='true' name='unreachableBlock' declared_type='NetworkUnreachable' index='0'>
+<arg type='@' declared_type='Reachability*'/>
+<retval type='v' declared_type='void'/>
+</arg>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='startNotifier'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='stopNotifier'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='unreachableBlock'>
+<retval type='@?' function_pointer='true' declared_type='NetworkUnreachable'>
+<arg type='@' declared_type='Reachability*'/>
+<retval type='v' declared_type='void'/>
+</retval>
+</method>
+</class>
+<class name='SRWebSocket'>
+<method selector='close'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='closeWithCode:reason:'>
+<arg type='i' name='code' declared_type='NSInteger' index='0'/>
+<arg type='@' name='reason' declared_type='NSString*' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='delegate'>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='initWithURL:'>
+<arg type='@' name='url' declared_type='NSURL*' index='0'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='initWithURL:protocols:'>
+<arg type='@' name='url' declared_type='NSURL*' index='0'/>
+<arg type='@' name='protocols' declared_type='NSArray*' index='1'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='initWithURLRequest:'>
+<arg type='@' name='request' declared_type='NSURLRequest*' index='0'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='initWithURLRequest:protocols:'>
+<arg type='@' name='request' declared_type='NSURLRequest*' index='0'/>
+<arg type='@' name='protocols' declared_type='NSArray*' index='1'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='open'>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='protocol'>
+<retval type='@' declared_type='NSString*'/>
+</method>
+<method selector='readyState'>
+<retval type='i' declared_type='SRReadyState'/>
+</method>
+<method selector='send:'>
+<arg type='@' name='data' declared_type='id' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setDelegate:'>
+<arg type='@' name='delegate' declared_type='id' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='url'>
+<retval type='@' declared_type='NSURL*'/>
+</method>
+</class>
+<informal_protocol name='BLYClientDelegate'>
+<method type='v16@0:4@8@12' selector='bullyClient:didReceiveError:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<arg type='@' name='error' declared_type='NSError*' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v12@0:4@8' selector='bullyClientDidConnect:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v12@0:4@8' selector='bullyClientDidDisconnect:'>
+<arg type='@' name='client' declared_type='BLYClient*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+</informal_protocol>
+<informal_protocol name='SRWebSocketDelegate'>
+<method type='v24@0:4@8i12@16B20' selector='webSocket:didCloseWithCode:reason:wasClean:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<arg type='i' name='code' declared_type='NSInteger' index='1'/>
+<arg type='@' name='reason' declared_type='NSString*' index='2'/>
+<arg type='B' name='wasClean' declared_type='BOOL' index='3'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v16@0:4@8@12' selector='webSocket:didFailWithError:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<arg type='@' name='error' declared_type='NSError*' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v16@0:4@8@12' selector='webSocket:didReceiveMessage:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<arg type='@' name='message' declared_type='id' index='1'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v12@0:4@8' selector='webSocketDidOpen:'>
+<arg type='@' name='webSocket' declared_type='SRWebSocket*' index='0'/>
+<retval type='v' declared_type='void'/>
+</method>
+</informal_protocol>
+</signatures>

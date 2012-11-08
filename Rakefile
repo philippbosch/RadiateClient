@@ -6,6 +6,12 @@ require 'bundler'
 Bundler.require
 
 Motion::Project::App.setup do |app|
-  # Use `rake config' to see complete project settings.
   app.name = 'RadiateClient'
+  app.pods do
+    pod 'SocketRocket', :head
+    pod 'Bully'
+  end
+  app.frameworks << 'MediaPlayer'
+  app.frameworks << 'AudioToolbox'
+  app.vendor_project('vendor/RBVolumeButtons', :static)
 end

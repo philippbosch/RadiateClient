@@ -1,0 +1,18 @@
+
+PODS:
+- Bully (0.2.0):
+  - Reachability
+  - SocketRocket
+- Reachability (3.1.0)
+- SocketRocket (HEAD based on 0.2.0)
+
+DEPENDENCIES:
+- Bully
+- SocketRocket (HEAD)
+
+SPEC CHECKSUMS:
+  Bully: 2c0127e4f8e2e6ba33548b0107592856f946264e
+  Reachability: 1c8584c5f26fa776695efef95caaa50402c94cfb
+  SocketRocket: a0529878e3c4c200196fa3a7e2ac1ef34aa33ffe
+
+COCOAPODS: 0.15.2
