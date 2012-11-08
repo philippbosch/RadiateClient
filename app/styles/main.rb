@@ -6,7 +6,7 @@ Teacup::Stylesheet.new(:main) do
   style :counter,
     width: UIScreen.mainScreen.bounds.size.width,
     height: 200,
-    center: [(UIScreen.mainScreen.bounds.size.width-20)/2, UIScreen.mainScreen.bounds.size.height/2],
+    center: [UIScreen.mainScreen.bounds.size.width/2, (UIScreen.mainScreen.bounds.size.height-20)/2],
     backgroundColor: UIColor.clearColor,
     textColor: UIColor.whiteColor,
     textAlignment: UITextAlignmentCenter,

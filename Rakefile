@@ -7,6 +7,7 @@ Bundler.require
 
 Motion::Project::App.setup do |app|
   app.name = 'RadiateClient'
+  app.device_family = [:iphone, :ipad]
   app.pods do
     pod 'SocketRocket', :head
     pod 'Bully'
